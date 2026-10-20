@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Elearing DDKN Lanjutan"
+run/main_scene="uid://swd7ko4u25py"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
