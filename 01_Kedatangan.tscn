@@ -1,18 +1,16 @@
 [gd_scene format=3 uid="uid://swd7ko4u25py"]
 
 [ext_resource type="Texture2D" uid="uid://c7owbw30ypj1e" path="res://assets/01_kedatangan.png" id="1_cm7to"]
-[ext_resource type="Script" uid="uid://d4ba4m7h8vhst" path="res://01_kedatangan.gd" id="1_ijvi8"]
 [ext_resource type="PackedScene" uid="uid://dxqv8iyl8txb2" path="res://02_Lobi.tscn" id="2_fli6v"]
+[ext_resource type="Script" uid="uid://d4ba4m7h8vhst" path="res://scripts/navigation_button.gd" id="2_ijvi8"]
 
-[node name="01Kedatangan" type="Control" unique_id=265099941]
+[node name="root" type="Control" unique_id=265099941]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_ijvi8")
-next_scene = ExtResource("2_fli6v")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1834308053]
 layout_mode = 0
@@ -28,5 +26,7 @@ offset_top = 606.0
 offset_right = 1134.0
 offset_bottom = 637.0
 text = "Next"
+script = ExtResource("2_ijvi8")
+next_scene = ExtResource("2_fli6v")
 
-[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
+[connection signal="pressed" from="NextButton" to="NextButton" method="move_next"]

@@ -2,8 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://boqt5sgntnc0r" path="res://assets/02_lobi.png" id="1_8hwif"]
 [ext_resource type="Texture2D" uid="uid://8g3v241duoyy" path="res://assets/02_tokoh.png" id="2_6ccxv"]
+[ext_resource type="Script" uid="uid://d4ba4m7h8vhst" path="res://scripts/navigation_button.gd" id="3_fe2ry"]
+[ext_resource type="PackedScene" uid="uid://4v87xc7vicwr" path="res://03_Peta.tscn" id="4_w5fme"]
 
-[node name="01Kedatangan" type="Control" unique_id=265099941]
+[node name="root" type="Control" unique_id=265099941]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,3 +34,7 @@ offset_top = 606.0
 offset_right = 1134.0
 offset_bottom = 637.0
 text = "Next"
+script = ExtResource("3_fe2ry")
+next_scene = ExtResource("4_w5fme")
+
+[connection signal="pressed" from="NextButton" to="NextButton" method="move_next"]
