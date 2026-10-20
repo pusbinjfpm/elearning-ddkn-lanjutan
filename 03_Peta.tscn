@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://4v87xc7vicwr"]
+
+[ext_resource type="Texture2D" uid="uid://cvm3fq72y851" path="res://assets/03_peta.png" id="1_nnyn1"]
+[ext_resource type="Script" uid="uid://d4ba4m7h8vhst" path="res://scripts/navigation_button.gd" id="3_bi4iv"]
+
+[node name="root" type="Control" unique_id=265099941]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1834308053]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.6887354, 0.6887354)
+texture = ExtResource("1_nnyn1")
+
+[node name="NextButton" type="Button" parent="." unique_id=661005458]
+layout_mode = 0
+offset_left = 1089.0
+offset_top = 606.0
+offset_right = 1134.0
+offset_bottom = 637.0
+text = "Next"
+script = ExtResource("3_bi4iv")
+
+[connection signal="pressed" from="NextButton" to="NextButton" method="move_next"]
