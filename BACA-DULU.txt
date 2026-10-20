@@ -1,12 +1,22 @@
-INTEGRITY DECISION LAB — VERSI LENGKAP 1.0
-19 Oktober 2026
+INTEGRITY DECISION LAB — VERSI LENGKAP 1.1.1 — AUDIO
+20 Oktober 2026
 
 MEMAINKAN GAME
-1. Ekstrak seluruh ZIP, lalu buka IDL-Lengkap-v1/index.html di browser komputer.
-2. Alternatif: buka IDL-Lengkap-v1.html. Berkas tunggal ini sudah memuat gambar dan font; tidak perlu koneksi internet.
+1. Ekstrak seluruh ZIP, lalu buka IDL-Audio-v1.1.1/index.html di browser komputer.
+2. Alternatif: buka IDL-Audio-v1.1.1.html. Berkas tunggal ini sudah memuat gambar, font, musik, dan efek ketikan; tidak perlu koneksi internet.
 3. Pilih Mulai perjalanan untuk mengikuti pembukaan, atau Langsung ke Misi 1.
 4. Gunakan Tampilkan semua untuk menyelesaikan efek mengetik. Jika teks masih berjalan, klik Lanjut pertama akan menampilkan seluruh teks; klik berikutnya melanjutkan cerita.
 5. Animasi Lebih terlihat menjadi standar. Tersedia Halus dan Diam pada Pengaturan. Preferensi sistem untuk mengurangi gerakan dihormati.
+
+MUSIK DAN EFEK KETIKAN
+- Klik Mulai perjalanan, Langsung ke Misi 1, atau Lanjutkan perjalanan untuk mengaktifkan audio.
+- Pengaturan → Suara permainan: musik dan efek ketikan memiliki sakelar serta volume masing-masing. Nilai awal: musik 40%, ketikan 35%.
+- Ketikan memakai bunyi yang lebih lembut, jeda bervariasi sekitar 115–180 ms, dan jeda tambahan pada tanda baca. Kecepatan munculnya teks tetap sama. Ketikan berhenti saat Tampilkan semua dan tidak berbunyi pada mode teks Instan.
+- Musik berulang sesuai bagian cerita: pagi di kantor, amplop, Deteksi, Pertimbangkan, Teladankan, Strategikan, dan penutup.
+- Pindah panel dalam bagian yang sama tidak mengulang musik. Pergantian tema memakai transisi sekitar satu detik.
+- Saat dialog dibuka, musik mengecil dan ketikan dijeda. Audio dijeda saat tab tidak aktif.
+- Pengaturan suara tersimpan dalam progres browser, ekspor JSON, dan progres LMS. Progres versi lama memakai nilai awal audio.
+- Tidak ada narasi suara. Musik instrumental dan enam variasi bunyi ketikan dibuat khusus untuk game; semua berkas disertakan untuk penggunaan offline.
 
 ALUR LENGKAP
 Pembukaan → Deteksi → peta → Pertimbangkan → peta → Teladankan → peta → Strategikan → peta → dashboard → arsip/job aid → refleksi → lobi penutup → selesai.
@@ -22,13 +32,13 @@ Semua jalur pilihan dapat diselesaikan. Status kualitatif menunjukkan bagian ana
 SIMPAN DAN LANJUTKAN
 - Versi offline menyimpan progres pada browser. Lokasi penyimpanan bisa berbeda jika berkas dipindah atau browser diganti.
 - Menu Progres menyediakan ekspor dan impor JSON. Gunakan ekspor sebagai cadangan, terutama bila penyimpanan browser tidak tersedia.
-- Progres v0.3/v0.3.1 dapat diimpor; Misi 1 yang selesai akan membuka Misi 2.
+- Progres v0.3/v0.3.1 dan v1.0 dapat diimpor; Misi 1 yang selesai akan membuka Misi 2.
 - Mulai baru mengganti progres aktif, tetapi mempertahankan pengaturan.
 - Job aid adalah HTML siap cetak. Buka hasil unduhan lalu gunakan menu Cetak browser untuk mencetak atau menyimpan PDF. Job aid berisi panduan empat langkah, keputusan, Canvas, dashboard, serta refleksi yang telah diisi.
 - Unduh job aid lagi pada halaman Selesai untuk mendapatkan refleksi akhir terbaru.
 
 UNTUK ADMINISTRATOR LMS
-Gunakan paket terpisah IDL-SCORM-12-v1.zip dan impor langsung sebagai SCORM 1.2. Jangan menambahkan folder pembungkus pada ZIP tersebut.
+Gunakan paket terpisah IDL-SCORM-12-v1.1.1.zip dan impor langsung sebagai SCORM 1.2. Jangan menambahkan folder pembungkus pada ZIP tersebut.
 Paket memiliki satu SCO, dengan imsmanifest.xml dan index.html pada akar ZIP.
 Penyelesaian dilaporkan setelah empat misi, kedua refleksi, dan dialog penutup selesai. Status: incomplete atau completed; tidak ada nilai angka atau status passed/failed.
 Bookmark dan progres disimpan melalui cmi.suspend_data. Waktu sesi, lokasi, dan status dikirim ke LMS. Saat keluar sebelum selesai, exit=suspend.
@@ -37,12 +47,12 @@ Pada sesi LMS yang sudah completed, mengulang untuk latihan tidak menurunkan sta
 Paket menggunakan API SCORM 1.2; tidak menggunakan API SCORM 2004.
 
 VERIFIKASI
-Pemeriksaan otomatis: 32 jalur lengkap, 50 kombinasi intervensi, revisi, kewajiban Canvas/refleksi, pemulihan progres, hasil unduhan, dan simulasi API SCORM. Referensi manifest dan isi ZIP diperiksa.
-Pemeriksaan ini menggunakan simulasi DOM dan API. Tampilan/animasi belum diperiksa langsung pada browser dalam lingkungan pembuatan; kompatibilitas LMS nyata belum diuji. Sebelum distribusi kelas, jalankan satu sesi peserta pada browser dan LMS tujuan, tutup di tengah perjalanan, lanjutkan, lalu selesaikan dan periksa status completed.
+Pemeriksaan otomatis: 32 jalur lengkap, 50 kombinasi intervensi, revisi, kewajiban Canvas/refleksi, pemulihan progres, hasil unduhan, dan simulasi API SCORM. Referensi manifest dan isi ZIP diperiksa. Tambahan audio diperiksa melalui simulasi Web Audio/DOM dan decoding seluruh 13 berkas audio.
+Pemeriksaan ini menggunakan simulasi DOM dan API. Tampilan/animasi dan pemutaran suara belum diperiksa langsung pada browser dalam lingkungan pembuatan; kompatibilitas LMS nyata belum diuji. Sebelum distribusi kelas, jalankan satu sesi peserta pada browser dan LMS tujuan, tutup di tengah perjalanan, lanjutkan, lalu selesaikan dan periksa status completed.
 
 BERKAS SUMBER
 source/ berisi konten, gaya, animasi, state, penghubung SCORM, pengendali permainan, dan build.py.
-Jalankan python source/build.py dari proyek untuk membangun ulang HTML dan kedua ZIP. Tidak diperlukan dependensi Python tambahan.
+Jalankan python source/build.py dari proyek untuk membangun ulang HTML dan kedua ZIP. Tidak diperlukan dependensi Python tambahan untuk build. Pembuatan ulang komposisi melalui source/compose_audio.py memerlukan numpy, scipy, dan ffmpeg; aset audio siap pakai sudah disertakan.
 CATATAN-PENGEMBANGAN.md menjelaskan sumber materi, adaptasi, dan kriteria dashboard.
 VALIDASI.md mencatat cakupan pemeriksaan.
 Lisensi font terdapat pada assets/fonts/LISENSI.txt.

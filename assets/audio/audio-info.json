@@ -1,0 +1,72 @@
+{
+  "pagi": {
+    "title": "Pagi yang Menunggu",
+    "mood": "Hangat, ringan",
+    "bpm": 78,
+    "duration": 49.231,
+    "sample_rate": 32000,
+    "peak": 0.35478,
+    "rms": 0.085,
+    "boundary_step": 0.003552
+  },
+  "amplop": {
+    "title": "Sebuah Titipan",
+    "mood": "Penasaran, misteri ringan",
+    "bpm": 68,
+    "duration": 56.471,
+    "sample_rate": 32000,
+    "peak": 0.38212,
+    "rms": 0.085,
+    "boundary_step": 0.004415
+  },
+  "deteksi": {
+    "title": "Di Antara Berkas",
+    "mood": "Investigatif, fokus",
+    "bpm": 76,
+    "duration": 50.526,
+    "sample_rate": 32000,
+    "peak": 0.36247,
+    "rms": 0.085,
+    "boundary_step": 0.001635
+  },
+  "pertimbangkan": {
+    "title": "Ruang Pertimbangan",
+    "mood": "Ketegangan ringan, tertahan",
+    "bpm": 72,
+    "duration": 53.333,
+    "sample_rate": 32000,
+    "peak": 0.40405,
+    "rms": 0.085,
+    "boundary_step": 0.004185
+  },
+  "teladankan": {
+    "title": "Standar yang Dijaga",
+    "mood": "Serius, reflektif",
+    "bpm": 64,
+    "duration": 60.0,
+    "sample_rate": 32000,
+    "peak": 0.3991,
+    "rms": 0.085,
+    "boundary_step": 0.004009
+  },
+  "strategikan": {
+    "title": "Merangkai Langkah",
+    "mood": "Optimistis, terarah",
+    "bpm": 84,
+    "duration": 45.714,
+    "sample_rate": 32000,
+    "peak": 0.3656,
+    "rms": 0.085,
+    "boundary_step": 0.003855
+  },
+  "penutup": {
+    "title": "Bekal untuk Esok",
+    "mood": "Tenang, hangat, selesai",
+    "bpm": 66,
+    "duration": 58.182,
+    "sample_rate": 32000,
+    "peak": 0.35665,
+    "rms": 0.085,
+    "boundary_step": 0.000113
+  }
+}

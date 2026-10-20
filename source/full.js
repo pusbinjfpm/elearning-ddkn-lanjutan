@@ -42,6 +42,7 @@ show=function(next,record=true){
  if(G.complete&&next==='analysis')next='feedback';
  for(const n of [2,3])if(G['m'+n].done&&next===`m${n}choice`)next=`m${n}feedback`;
  if(G.m4.done&&['interventions','combination','canvas','canvasReview'].includes(next))next='m4done';
+ gameAudio.scene(next);
  if(/^i\d+$/.test(next)||['hypothesis','files','analysis','feedback','complete'].includes(next)){approvedShow(next,false);$('progressText').textContent=completedMissions()+' dari 4 misi selesai';$('progressBar').style.width=(completedMissions()*25)+'%';if(record)save();return;}
  view=next;G.scene=next;document.body.dataset.page=next;$('cover').classList.add('hidden');$('workspace').innerHTML='';$('content').innerHTML='';$('placard').classList.remove('hidden');$('count').classList.remove('hidden');$('stage').classList.remove('work');$('next').classList.remove('hidden');$('next').disabled=false;$('back').disabled=false;
  if(next==='mapend'||/^map[234]$/.test(next))fullMap(next);else if(/^m[23]/.test(next))renderChapter(Number(next[1]),next);else if(['m4brief','interventions','combination','canvas','canvasReview','m4done'].includes(next))renderStrategy(next);else if(next.startsWith('closing'))renderClosing(next);else renderFinal(next);
@@ -64,4 +65,4 @@ if(hasSaved)$('resume').textContent=G.finished?'Tinjau hasil perjalanan':'Lanjut
 
 attachMap=function(){document.querySelectorAll('[data-room]').forEach(b=>b.onclick=()=>{const i=Number(b.dataset.room);info('Misi '+(i+1)+' — '+MISSIONS[i][0],MISSIONS[i][1]+(i>0?' Ruang ini terbuka setelah misi sebelumnya selesai.':' Inilah tujuan pertama Anda.'));});};
 
-const resumeStart=startAt;startAt=function(scene){LMS.resumeWrites();resumeStart(scene);};
+const resumeStart=startAt;startAt=function(scene){gameAudio.unlock();LMS.resumeWrites();resumeStart(scene);};

@@ -1,4 +1,4 @@
-# Integrity Decision Lab — versi lengkap 1.0
+# Integrity Decision Lab — versi lengkap 1.1.1
 
 Versi ini melengkapi pembukaan dan Misi Deteksi yang telah disetujui dengan Pertimbangkan, Teladankan, Strategikan, Strategy Canvas, debrief, job aid, refleksi, dan penutup. Tampilan memakai ilustrasi kantor 2D, kartu map, kertas arsip, warna hijau gelap dan kuningan, serta font lokal. Animasi pembukaan tetap menggunakan standar “Lebih terlihat” dengan amplitudo 1,65.
 
@@ -8,7 +8,7 @@ Sumber utama: **Storyboard Integritas Lanjutan (2).pptx** (33 slide) dan **Masuk
 
 | Bagian | Sumber / penerapan |
 | --- | --- |
-| Pembukaan | Kedatangan, resepsionis, amplop, empat kartu misi, panduan, empat lensa, dan peta. Narator berupa teks mengetik; tidak ada audio. |
+| Pembukaan | Kedatangan, resepsionis, amplop, empat kartu misi, panduan, empat lensa, dan peta. Narator berupa teks mengetik dengan efek ketikan, diiringi musik instrumental tanpa pembacaan suara. |
 | Misi 1 | Slide 10–14: rekomendasi fiskal, tenggat dua hari, hipotesis A/B, berkas data/metode/tim/konteks, pilihan analisis A–D. |
 | Misi 2 | Slide 17–19: asumsi penerimaan optimistis yang masih mungkin secara teknis tetapi dukungan buktinya lebih lemah; empat respons A–D. |
 | Misi 3 | Slide 22–24: konsistensi standar saat perbedaan pendapat memiliki konsekuensi; dua tindakan A/B dan refleksi wajib. |
@@ -68,11 +68,11 @@ Hipotesis awal menentukan teks perkembangan analisis dan tidak menambah/menguran
 ## Runtime, penyimpanan, dan SCORM
 
 - Game buildless HTML/CSS/JavaScript, tanpa layanan eksternal atau panggilan AI saat dimainkan.
-- HTML tunggal memuat semua gambar/font. ZIP offline memuat sumber dan aset. Tekstur animasi di-inline agar dapat diakses melalui file://.
+- HTML tunggal memuat semua gambar/font/audio. ZIP offline memuat sumber dan aset. Tekstur animasi di-inline agar dapat diakses melalui file://.
 - Format progres 4, dengan migrasi dari format 3. Pilihan, dependensi antarmisi, scene, batas intervensi, Canvas, dan refleksi diperiksa saat impor.
 - Riwayat narasi lokal dibatasi 100 entri. Jejak revisi dibatasi 24 entri terakhir per misi; pilihan pertama tetap disimpan secara terpisah.
 - Refleksi Misi 3 dan akhir masing-masing maksimum 300 unit karakter JavaScript. UI menampilkan penghitung.
-- Dalam LMS, state ringkas tidak menyimpan seluruh riwayat dialog agar muat pada cmi.suspend_data SCORM 1.2. Hasil dan refleksi tetap tersimpan. Uji payload panjang menghasilkan 2.307 byte dari batas 4.096 byte.
+- Dalam LMS, state ringkas tidak menyimpan seluruh riwayat dialog agar muat pada cmi.suspend_data SCORM 1.2. Hasil dan refleksi tetap tersimpan. Uji payload panjang menghasilkan 2.323 byte dari batas 4.096 byte.
 - API: LMSInitialize, LMSGetValue, LMSSetValue, LMSCommit, LMSFinish. API dicari pada window/parent/opener dengan penjagaan akses lintas origin.
 - Field: cmi.suspend_data, cmi.core.lesson_location, cmi.core.lesson_status, cmi.core.session_time, cmi.core.exit.
 - Status completed ditetapkan setelah tombol penyelesaian pada dialog penutup. Tidak mengirim cmi.core.score atau passed/failed. Status completed sebelumnya tidak diturunkan ketika pemain mengulang untuk latihan.
@@ -97,3 +97,31 @@ Rujukan implementasi SCORM: ADL SCORM 1.2 Conformance Requirements; ADL Cross-Do
 | template.html, build.py | Shell HTML serta build mandiri, ZIP sumber, dan ZIP SCORM. |
 
 Satu perbaikan interaksi ikut diterapkan pada Misi 1: event klik berkas dibatasi pada kartu berkas, sehingga tombol penutup tidak memicu pembukaan ulang dialog melalui bubbling.
+
+
+## Penambahan audio versi 1.1.1
+
+Musik dan bunyi dibuat khusus melalui sintesis di `source/compose_audio.py`. Tidak memakai lagu, rekaman, atau sampel pihak ketiga. Tujuh tema stereo berulang memiliki durasi sekitar 46–60 detik; enam sampel ketikan mono memiliki variasi pendek. Audio lokal di-inline saat build sehingga pembacaan berkas tidak memerlukan fetch, server, atau internet.
+
+| Bagian | Tema | Nuansa |
+| --- | --- | --- |
+| Kedatangan dan resepsionis (i0–i3) | Pagi yang Menunggu | Hangat, ringan, awal hari. |
+| Amplop dan pengantar misi (i4–i8) | Sebuah Titipan | Rasa ingin tahu dan misteri ringan. |
+| Menuju Deteksi dan Misi 1 | Di Antara Berkas | Fokus, menelaah bukti. |
+| Peta berikutnya dan Misi 2 | Ruang Pertimbangan | Tenang dan reflektif. |
+| Peta berikutnya dan Misi 3 | Standar yang Dijaga | Serius, menjaga pendirian. |
+| Peta berikutnya dan Misi 4/Canvas | Merangkai Langkah | Lebih bergerak dan terarah. |
+| Dashboard, rekap, refleksi, penutup | Bekal untuk Esok | Hangat dan selesai. |
+
+`source/audio.js` mengelola aktivasi dari tindakan pemain, decode sesuai kebutuhan, pergantian tema, penghentian ketikan, volume, dan jeda saat halaman tersembunyi. Musik yang sama tidak dibuat ulang setiap panel; pergantian tema crossfade 1,05 detik. Saat musik diaktifkan kembali, posisi putar terakhir dalam sesi dipakai. Posisi lagu tidak dimasukkan ke progres lintas sesi.
+
+Efek ketikan hanya berbunyi saat karakter muncul, dengan variasi sampel, pitch, dan jeda 115–180 ms, dengan tambahan jeda 140–220 ms pada koma/titik koma dan 240–320 ms pada akhir kalimat. Spasi dan tanda baca tidak membunyikan ketikan. Sampel yang sama tidak dimainkan dua kali berturut-turut. Tampilkan semua, narasi baru, dialog, mode Instan, dan tab tersembunyi menghentikan ketikan. Dialog menurunkan volume musik menjadi 55% dari level pilihan pemain.
+
+Dua sakelar dan dua pengatur volume ditambahkan melalui `source/audio.css` dan template. Nilai awal musik 40%, ketikan 35%. Format progres tetap versi 4: field audio opsional pada progres lama, dan ditambahkan ke array pengaturan ringkas SCORM. Narasi, pilihan, animasi pembukaan, serta kriteria pembelajaran dipertahankan.
+
+Rujukan implementasi: [MDN Web Audio best practices](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API/Best_practices), [decodeAudioData](https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData), dan [AudioBufferSourceNode](https://developer.mozilla.org/en-US/docs/Web/API/AudioBufferSourceNode).
+
+
+## Revisi ketikan 1.1.1
+
+Enam sampel diganti dengan kontak tombol bernada lebih rendah, attack membulat, dan komponen frekuensi tinggi yang dipangkas. RMS sampel 0,020, sekitar 8,5 dB lebih rendah dari rerata versi 1.1. Nilai volume pilihan pengguna dan tempo teks dipertahankan. Tujuh MP3 musik latar identik secara byte dengan versi 1.1. Gunakan `python source/compose_audio.py --keys-only` untuk membangun ulang ketikan tanpa merender musik.

@@ -1,0 +1,4 @@
+Musik dan efek ketikan disusun khusus untuk Integrity Decision Lab pada 20 Oktober 2026.
+Komposisi instrumental dan sintesis bunyi dibuat dari sumber compose_audio.py; tidak memakai rekaman lagu atau sampel pihak ketiga.
+Tujuh tema stereo berulang, enam variasi ketikan mono. Semua audio disertakan di dalam game offline.
+Revisi 1.1.1: enam bunyi ketikan diperlunak; tujuh tema musik latar versi 1.1 dipertahankan.

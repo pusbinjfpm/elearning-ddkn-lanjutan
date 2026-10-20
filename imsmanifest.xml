@@ -15,6 +15,21 @@
   <resources>
     <resource identifier="RES-IDL" type="webcontent" href="index.html" adlcp:scormtype="sco">
       <file href="index.html" />
+      <file href="assets/audio/TENTANG-AUDIO.txt" />
+      <file href="assets/audio/amplop.mp3" />
+      <file href="assets/audio/audio-info.json" />
+      <file href="assets/audio/deteksi.mp3" />
+      <file href="assets/audio/key-1.wav" />
+      <file href="assets/audio/key-2.wav" />
+      <file href="assets/audio/key-3.wav" />
+      <file href="assets/audio/key-4.wav" />
+      <file href="assets/audio/key-5.wav" />
+      <file href="assets/audio/key-6.wav" />
+      <file href="assets/audio/pagi.mp3" />
+      <file href="assets/audio/penutup.mp3" />
+      <file href="assets/audio/pertimbangkan.mp3" />
+      <file href="assets/audio/strategikan.mp3" />
+      <file href="assets/audio/teladankan.mp3" />
       <file href="assets/deteksi.png" />
       <file href="assets/fonts/LISENSI.txt" />
       <file href="assets/fonts/catatan.woff" />
