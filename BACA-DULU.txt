@@ -1,0 +1,48 @@
+INTEGRITY DECISION LAB — VERSI LENGKAP 1.0
+19 Oktober 2026
+
+MEMAINKAN GAME
+1. Ekstrak seluruh ZIP, lalu buka IDL-Lengkap-v1/index.html di browser komputer.
+2. Alternatif: buka IDL-Lengkap-v1.html. Berkas tunggal ini sudah memuat gambar dan font; tidak perlu koneksi internet.
+3. Pilih Mulai perjalanan untuk mengikuti pembukaan, atau Langsung ke Misi 1.
+4. Gunakan Tampilkan semua untuk menyelesaikan efek mengetik. Jika teks masih berjalan, klik Lanjut pertama akan menampilkan seluruh teks; klik berikutnya melanjutkan cerita.
+5. Animasi Lebih terlihat menjadi standar. Tersedia Halus dan Diam pada Pengaturan. Preferensi sistem untuk mengurangi gerakan dihormati.
+
+ALUR LENGKAP
+Pembukaan → Deteksi → peta → Pertimbangkan → peta → Teladankan → peta → Strategikan → peta → dashboard → arsip/job aid → refleksi → lobi penutup → selesai.
+
+Misi 1: simpan hipotesis, baca dan tandai empat berkas, pilih analisis, baca konsekuensi, lalu tetapkan.
+Misi 2: pilih respons atas permintaan asumsi optimistis; lihat konsekuensi dan tetapkan tindakan.
+Misi 3: pilih respons terhadap perbedaan pendapat berbasis bukti; baca konsekuensi, isi refleksi singkat, lalu tetapkan.
+Misi 4: pilih 2–4 intervensi, tinjau kombinasi, isi empat kolom Strategy Canvas, tinjau hubungan, lalu tetapkan.
+Setelah empat misi: lihat empat lensa, unduh job aid/rekap, isi refleksi akhir, dan selesaikan dialog penutup.
+Pilihan dapat ditinjau ulang sebelum ditetapkan. Setelah ditetapkan, catatan tetap dapat dibuka. Mulai perjalanan baru untuk mengeksplorasi jalur lain.
+Semua jalur pilihan dapat diselesaikan. Status kualitatif menunjukkan bagian analisis yang sudah terlihat dan yang perlu diperluas. Refleksi tidak diberi nilai otomatis.
+
+SIMPAN DAN LANJUTKAN
+- Versi offline menyimpan progres pada browser. Lokasi penyimpanan bisa berbeda jika berkas dipindah atau browser diganti.
+- Menu Progres menyediakan ekspor dan impor JSON. Gunakan ekspor sebagai cadangan, terutama bila penyimpanan browser tidak tersedia.
+- Progres v0.3/v0.3.1 dapat diimpor; Misi 1 yang selesai akan membuka Misi 2.
+- Mulai baru mengganti progres aktif, tetapi mempertahankan pengaturan.
+- Job aid adalah HTML siap cetak. Buka hasil unduhan lalu gunakan menu Cetak browser untuk mencetak atau menyimpan PDF. Job aid berisi panduan empat langkah, keputusan, Canvas, dashboard, serta refleksi yang telah diisi.
+- Unduh job aid lagi pada halaman Selesai untuk mendapatkan refleksi akhir terbaru.
+
+UNTUK ADMINISTRATOR LMS
+Gunakan paket terpisah IDL-SCORM-12-v1.zip dan impor langsung sebagai SCORM 1.2. Jangan menambahkan folder pembungkus pada ZIP tersebut.
+Paket memiliki satu SCO, dengan imsmanifest.xml dan index.html pada akar ZIP.
+Penyelesaian dilaporkan setelah empat misi, kedua refleksi, dan dialog penutup selesai. Status: incomplete atau completed; tidak ada nilai angka atau status passed/failed.
+Bookmark dan progres disimpan melalui cmi.suspend_data. Waktu sesi, lokasi, dan status dikirim ke LMS. Saat keluar sebelum selesai, exit=suspend.
+Progres dari LMS didahulukan; penyimpanan browser pribadi tidak dicampurkan ke sesi peserta LMS. Jika API LMS tidak ditemukan, game dapat berjalan sebagai permainan offline.
+Pada sesi LMS yang sudah completed, mengulang untuk latihan tidak menurunkan status penyelesaian sebelumnya.
+Paket menggunakan API SCORM 1.2; tidak menggunakan API SCORM 2004.
+
+VERIFIKASI
+Pemeriksaan otomatis: 32 jalur lengkap, 50 kombinasi intervensi, revisi, kewajiban Canvas/refleksi, pemulihan progres, hasil unduhan, dan simulasi API SCORM. Referensi manifest dan isi ZIP diperiksa.
+Pemeriksaan ini menggunakan simulasi DOM dan API. Tampilan/animasi belum diperiksa langsung pada browser dalam lingkungan pembuatan; kompatibilitas LMS nyata belum diuji. Sebelum distribusi kelas, jalankan satu sesi peserta pada browser dan LMS tujuan, tutup di tengah perjalanan, lanjutkan, lalu selesaikan dan periksa status completed.
+
+BERKAS SUMBER
+source/ berisi konten, gaya, animasi, state, penghubung SCORM, pengendali permainan, dan build.py.
+Jalankan python source/build.py dari proyek untuk membangun ulang HTML dan kedua ZIP. Tidak diperlukan dependensi Python tambahan.
+CATATAN-PENGEMBANGAN.md menjelaskan sumber materi, adaptasi, dan kriteria dashboard.
+VALIDASI.md mencatat cakupan pemeriksaan.
+Lisensi font terdapat pada assets/fonts/LISENSI.txt.

@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='utf-8'?>
+<manifest xmlns="http://www.imsproject.org/xsd/imscp_rootv1p1p2" xmlns:adlcp="http://www.adlnet.org/xsd/adlcp_rootv1p2" identifier="IDL-INTEGRITAS-V1" version="1.0">
+  <metadata>
+    <schema>ADL SCORM</schema>
+    <schemaversion>1.2</schemaversion>
+  </metadata>
+  <organizations default="ORG-IDL">
+    <organization identifier="ORG-IDL">
+      <title>Integrity Decision Lab</title>
+      <item identifier="ITEM-IDL" identifierref="RES-IDL" isvisible="true">
+        <title>Empat Misi Integritas</title>
+      </item>
+    </organization>
+  </organizations>
+  <resources>
+    <resource identifier="RES-IDL" type="webcontent" href="index.html" adlcp:scormtype="sco">
+      <file href="index.html" />
+      <file href="assets/deteksi.png" />
+      <file href="assets/fonts/LISENSI.txt" />
+      <file href="assets/fonts/catatan.woff" />
+      <file href="assets/fonts/judul.woff" />
+      <file href="assets/fonts/teks-tebal.woff" />
+      <file href="assets/fonts/teks.woff" />
+      <file href="assets/kedatangan.png" />
+      <file href="assets/lobi.png" />
+      <file href="assets/peta.png" />
+      <file href="assets/rekan.png" />
+      <file href="assets/tokoh.png" />
+    </resource>
+  </resources>
+</manifest>

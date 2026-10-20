@@ -1,0 +1,14 @@
+// SCORM 1.2 single-SCO adapter. Standalone builds also work without an LMS.
+const LMS=(()=>{let api=null,connected=false,closed=false,start=Date.now(),timer=null,restore='',issue='',wasComplete=false,paused=false;
+ function find(w){const seen=new Set();for(let i=0;w&&i<50;i++){if(seen.has(w))break;seen.add(w);try{if(w.API&&typeof w.API.LMSInitialize==='function')return w.API;if(w.parent===w)break;w=w.parent;}catch(e){break;}}return null;}
+ try{api=find(window)||find(window.opener);}catch(e){}
+ function call(name,...args){try{return String(api[name](...args));}catch(e){issue='Koneksi LMS terganggu. Unduh progres sebagai cadangan.';return 'false';}}
+ if(api){connected=call('LMSInitialize','')==='true';if(connected){restore=call('LMSGetValue','cmi.suspend_data');if(restore==='false')restore='';wasComplete=['completed','passed'].includes(call('LMSGetValue','cmi.core.lesson_status'));}else issue='LMS belum dapat diinisialisasi. Progres belum tercatat di LMS.';}
+ function duration(){const total=Math.min(359999999,Math.floor((Date.now()-start)/10)),h=Math.floor(total/360000),m=Math.floor(total/6000)%60,s=Math.floor(total/100)%60,cs=total%100;return [String(h).padStart(4,'0'),String(m).padStart(2,'0'),String(s).padStart(2,'0')].join(':')+'.'+String(cs).padStart(2,'0');}
+ function sync(){clearTimeout(timer);if(!connected||closed||paused)return false;const payload=compactState(G);if(new TextEncoder().encode(payload).length>4096){issue='Progres melebihi kapasitas LMS. Unduh progres sebagai cadangan.';return false;}let ok=true;const set=(k,v)=>{if(call('LMSSetValue',k,String(v))!=='true')ok=false;};set('cmi.suspend_data',payload);set('cmi.core.lesson_location',G.scene);set('cmi.core.lesson_status',G.finished||wasComplete?'completed':'incomplete');set('cmi.core.session_time',duration());set('cmi.core.exit',G.finished?'':'suspend');if(call('LMSCommit','')!=='true')ok=false;issue=ok?'':'LMS belum mengonfirmasi penyimpanan. Unduh progres sebagai cadangan.';if(ok&&G.finished)wasComplete=true;return ok;}
+ function queue(){if(!connected||closed)return;clearTimeout(timer);timer=setTimeout(()=>{sync();if(typeof updateSaveLabel==='function')updateSaveLabel();},350);}
+ function finish(){if(!connected||closed)return;sync();closed=true;call('LMSFinish','');}
+ window.addEventListener('pagehide',finish);window.addEventListener('beforeunload',finish);document.addEventListener('visibilitychange',()=>{if(document.hidden&&connected&&!closed)sync();});
+ window.addEventListener('pageshow',e=>{if(e.persisted&&api&&closed){closed=false;connected=call('LMSInitialize','')==='true';start=Date.now();}});
+ return {get connected(){return connected;},get detected(){return !!api;},get issue(){return issue;},get restored(){return restore;},get closed(){return closed;},pauseWrites(message){paused=true;issue=message;},resumeWrites(){if(paused){paused=false;issue='';}},sync,queue,finish};
+})();
